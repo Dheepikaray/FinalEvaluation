@@ -93,7 +93,7 @@ def login_view(request):
                 return redirect('parent') #parent is the path name redirect to admin page
         else:
             messages.info(request, 'Invalid Credentials')
-    return render(request, 'view_publisher.html')
+    return render(request, 'login.html')
 
 def view(request):
     data =  Publisher.objects.all()
@@ -121,7 +121,7 @@ def delete1(request,id):
         delt1 = blog.objects.get(id=id)
 
         delt1.delete()
-        
+
 
         return redirect("view2")
     return render(request,"admin.html")
@@ -157,8 +157,9 @@ def blog_register(request):
 
 
 def view2(request):
-    data =  blog.objects.all().order_by("id").values()
+    data =  blog.objects.all().order_by("id","date").values()
     return render(request, "view_bloglist.html", {"data": data})
+
 
 def blogupdate(request,id):
     blog_data = blog.objects.get(id=id)
@@ -177,6 +178,10 @@ def view_blog_user(request):
     return render(request,"view_bloglist_student.html",{"data": data})
 
 
-#api_view
+
+
+# def all_blog_posts(request):
+#     blog_posts = blog.objects.all().order_by('-date')  # Order by date in descending order
+#     return render(request, 'blo.html', {'blog_posts': blog_posts})
 
 
