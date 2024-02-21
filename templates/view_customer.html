@@ -1,0 +1,25 @@
+{% extends "admin.html" %}
+{% block content %}
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+
+    </tr>
+    {% for x in data %}
+    <tr>
+        <td>{{ x.name }}</td>
+        <td>{{ x.address }}</td>
+        <td>{{ x.phone }}</td>
+
+
+
+
+
+
+
+    </tr>
+    {% endfor %}
+</table>
+         {% endblock %}

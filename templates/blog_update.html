@@ -1,0 +1,27 @@
+{% extends 'admin.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="text-center display-4">Update Blog Details</h1>
+        </div>
+        <div class="col-md-8">
+
+            <form method="POST" action="#" enctype="multipart/form-data" >
+                {% csrf_token %}
+                {{ blog_form|crispy }}
+        <div class="col-lg-6">
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">
+                {{message}}
+                {% endfor %}
+            </div>
+        </div>
+
+                <input type="submit" class="btn btn-dark btn-block" value="Update"/>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "admin.html" %}
+
+{% load crispy_forms_filters %}
+{% block content %}
+<table class="table table-bordered">
+    <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Content</th>
+        <th>Information</th>
+        <th>Image</th>
+
+    </tr>
+    {% for x in data %}
+    <tr>
+        <td>{{ x.title }}</td>
+        <td>{{ x.date }}</td>
+        <td>{{ x.content }}</td>
+        <td>{{ x.Information }}</td>
+        <td><img src="{{ x.Image.url }}"/></td>
+
+
+
+
+
+    {% if forloop.counter|divisibleby:2 or forloop.last %}
+    </tr>
+    {% endif %}
+    {% endfor %}
+</table>
+         {% endblock %}

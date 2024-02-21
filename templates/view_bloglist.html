@@ -1,0 +1,47 @@
+{% extends "admin.html" %}
+
+{% load crispy_forms_filters %}
+{% block content %}
+<table class="table table-bordered">
+    <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Content</th>
+        <th>Information</th>
+        <th>Image</th>
+        <th>update</th>
+        <th>delete</th>
+    </tr>
+    {% for x in data %}
+    <tr>
+        <td>{{ x.title }}</td>
+        <td>{{ x.date }}</td>
+        <td>{{ x.content }}</td>
+        <td>{{ x.Information }}</td>
+        <td><img src="{{ x.Image.url }}"/></td>
+
+
+        <td>
+            <form method="POST" action="{% url 'update2' x.id %}">
+                {% csrf_token %}
+                {{reg_form|crispy}}
+                {{blog_form|crispy}}
+            <input type="submit" class="btn btn-danger" value="Update" />
+            </form>
+        </td>
+
+        <td>
+             <form action="{% url 'delete1' x.id %}" method="POST" >
+                                {% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="Delete" />
+
+             </form>
+        </td>
+    </td>
+
+
+
+    </tr>
+    {% endfor %}
+</table>
+         {% endblock %}
